@@ -22,7 +22,7 @@ const Login = () => {
 
     const data = { email, password }
 
-    const res = await fetch('http://localhost:8000/users/login', {
+    const res = await fetch('https://team-project-manager.herokuapp.com/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

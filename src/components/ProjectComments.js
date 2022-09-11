@@ -26,7 +26,7 @@ const ProjectComments = () => {
       id: Math.floor(Math.random() * 1000)
     }
 
-    const res = await fetch(`http://localhost:8000/projects/${id}`, {
+    const res = await fetch(`https://team-project-manager.herokuapp.com/projects/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'

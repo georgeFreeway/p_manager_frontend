@@ -91,7 +91,7 @@ const Form = () => {
     };
 
     //posting the project object
-    const res = await fetch('http://localhost:8000/postprojects', {
+    const res = await fetch('https://team-project-manager.herokuapp.com/postprojects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

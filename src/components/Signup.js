@@ -26,7 +26,7 @@ const Signup = () => {
     const data = { email, password, userName };
     // console.log(data);
 
-    const res = await fetch('http://localhost:8000/users/signup', {
+    const res = await fetch('https://team-project-manager.herokuapp.com/users/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -22,7 +22,7 @@ const ProjectDetails = () => {
       setError(null);
 
       try{
-        const res = await fetch(`http://localhost:8000/getprojects/${id}`);
+        const res = await fetch(`https://team-project-manager.herokuapp.com/getprojects/${id}`);
         if(!res.ok){
           throw new Error(res.statusText);
         }
@@ -45,7 +45,7 @@ const ProjectDetails = () => {
 
   const handleDelete = async (id) => {
     
-    const res = await fetch(`http://localhost:8000/projects/${id}`, {
+    const res = await fetch(`https://team-project-manager.herokuapp.com/projects/${id}`, {
       method: 'DELETE'
     });
 
