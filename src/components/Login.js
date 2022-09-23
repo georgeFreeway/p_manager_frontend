@@ -45,7 +45,7 @@ const Login = () => {
 
   }
   return (
-    <div className= {`App ${mode} container mx-auto text-center p-6`}>
+    <div className= {`App ${mode} container mx-auto text-center pb-96 pt-10`}>
       <h1 className={`App ${mode} text-2xl font-semibold text-gray-900`}>Login to your account</h1>
       <p className='text-gray-400 mt-1 text-sm'>Don't have an account? <Link to='/signup' className='text-gray-600 font-bold text-sm'>Create an account today</Link></p>
 
@@ -54,7 +54,7 @@ const Login = () => {
           <input 
             type='text'
             placeholder=' Enter Your Email Address'
-            className={`App ${mode} h-12 w-96 mt-2 rounded-md`}
+            className={`App ${mode} h-12 w-full lg:w-96 mt-2 rounded-md`}
             style={{ border : error ? '1px solid red' : '1px solid gray' }}
             onChange={(e) => setEmail(e.target.value)}
             value={email}
@@ -65,7 +65,7 @@ const Login = () => {
           <input 
             type='password'
             placeholder=' Enter Your Password'
-            className={`App ${mode} h-12 w-96 mt-2 rounded-md`}
+            className={`App ${mode} h-12 w-full lg:w-96 mt-2 rounded-md`}
             style={{ border: error ? '1px solid red' : '1px solid gray' }}
             onChange={(e) => setPassword(e.target.value)}
             value={password}

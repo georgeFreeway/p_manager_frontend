@@ -49,7 +49,7 @@ const Signup = () => {
   }
 
   return (
-    <div className='container mx-auto text-center p-6'>
+    <div className='container mx-auto text-center pb-96 pt-10'>
       <h1 className='text-2xl font-semibold'>Start working remotely with friends today</h1>
       <p className='text-gray-400 mt-1 text-sm'>Already have an account? <Link to='/login' className='text-gray-600 font-bold text-sm'>Log in to your account</Link></p>
 
@@ -58,7 +58,7 @@ const Signup = () => {
           <input 
             type='text'
             placeholder=' Enter A Valid Email Address'
-            className={`App ${mode} h-12 w-96 mt-2 rounded-md`}
+            className={`App ${mode} h-12 w-full lg:w-96 mt-2 rounded-md`}
             style={{ border: error ? '1px solid red' : '1px solid gray' }}
             onChange={(e) => setEmail(e.target.value)}
             value={email}
@@ -69,7 +69,7 @@ const Signup = () => {
           <input 
             type='password'
             placeholder=' Enter A Secured Password'
-            className={`App ${mode} h-12 w-96 mt-2 rounded-md`}
+            className={`App ${mode} h-12 w-full lg:w-96 mt-2 rounded-md`}
             style={{ border: error ? '1px solid red' : '1px solid gray' }}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
@@ -80,7 +80,7 @@ const Signup = () => {
           <input 
             type='text'
             placeholder=' Enter A User Name'
-            className={`App ${mode} h-12 w-96 mt-2 rounded-md`}
+            className={`App ${mode} h-12 w-full lg:w-96 mt-2 rounded-md`}
             style={{ border: error ? '1px solid red' : '1px solid gray' }}
             onChange={(e) => setUserName(e.target.value)}
             value={userName}

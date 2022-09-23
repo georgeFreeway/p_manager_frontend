@@ -31,6 +31,7 @@ const Form = () => {
   const [dueDate, setDueDate] = useState('');
   const [category, setCategory] = useState('');
   const [assignedUsers, setAssignedUsers] = useState([]);
+  const [ loading, setIsLoading ] = useState(false);
   const [error, setError] = useState(null);
 
   //map documents to produce a new array
@@ -45,6 +46,7 @@ const Form = () => {
 
   //reset function
   const reset = () => {
+    setError(null);
     setName('');
     setDetails('');
     setDueDate('');
@@ -55,6 +57,7 @@ const Form = () => {
   const handleForm = async (e) => {
     e.preventDefault();
     setError(null);
+    setIsLoading(true);
 
     //assigned users new array
     const assignedUsersList = assignedUsers.map((aUser) => {
@@ -69,13 +72,21 @@ const Form = () => {
       id: user.user._id
     }
 
+    if(!name || !details || !dueDate){
+      setError('Please fill the required fields!!');
+      setIsLoading(false);
+      return;
+    }
+
     if(!category){
       setError('Please chose a category');
+      setIsLoading(false);
       return;
     }
 
     if(assignedUsers.length < 1){
       setError('Please assign users');
+      setIsLoading(false);
       return;
     }
 
@@ -103,9 +114,12 @@ const Form = () => {
 
     if(!res.ok){
       setError(json.error);
+      setIsLoading(false);
     }
 
     if(res.ok){
+      setIsLoading(false);
+      setError(null);
       dispatch({ type: 'POST_DATA', payload: json });
       navigate('/');
     }
@@ -176,9 +190,13 @@ const Form = () => {
             />
           </div>
 
-          <button className='px-2 py-2 bg-green-900 text-white text-sm rounded-md mt-3 mb-3'>
+          {!loading && <button className='px-2 py-2 bg-green-900 text-white text-sm rounded-md mt-3 mb-3'>
             Add Project
-          </button>
+          </button>}
+
+          {loading && <button disabled className='px-2 py-2 bg-green-900 text-white text-sm rounded-md mt-3 mb-3'>
+            Add Project
+          </button>}
           {error && <p className='text-red-400'>{error}</p>}
         </form>
     </div>

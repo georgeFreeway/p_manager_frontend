@@ -12,11 +12,10 @@ const ProjectFilter = ({ filter, changeFilter }) => {
     }
 
     return (
-        <nav className={`App ${mode} flex space-x-3 border-2 border-gray-300 px-2 py-2 rounded-md items-center`}>
-            <p className='p-1'>Filter by: </p>
+        <nav className={`App ${mode} border-2 border-gray-300 rounded-md flex justify-evenly p-2`}>
             {projects.map((p) => (
                 <button 
-                    className={`App ${mode} px-1 py-1`}
+                    className={`App ${mode} px-1 py-1 rounded-sm`}
                     style={{ background: filter === p ? 'black': '' }}
                     key={p}
                     onClick={() => handleFilter(p)}>

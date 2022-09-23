@@ -11,7 +11,7 @@ const Sidebar = () => {
   const { mode } = useModeContext();
 
   return (
-    <div className={`App ${mode} h-80 w-44 bg-gray-100 mt-3 flex flex-col border-r-2 border-gray-300`}>
+    <div className={`App ${mode} hidden mt-3 md:h-96 md:w-44 bg-gray-100 md:flex flex-col border-r-2 border-gray-300`}>
       <div className='flex items-center px-2 py-2 space-x-1 hover:bg-gray-900 hover:text-gray-100'>
         <UserIcon className='h-5'/>
         {user && <p className='text-sm'>{user.user.userName}</p>}

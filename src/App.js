@@ -20,12 +20,12 @@ const App = () => {
   const { mode } = useModeContext();
 
   return (
-    <div className={`App ${mode}`}>
+    <div className={`App ${mode} p-2`}>
       <BrowserRouter>
       <Navbar />
-      <div className='flex space-x-4'>      
+      <div className='md:flex'>      
         {user && <Sidebar />}
-        <div className={`App ${mode} bg-gray-100 mt-3 rounded-md w-full p-2`}>
+        <div className={`App ${mode} bg-gray-100 md:p-4 pb-96 w-full`}>
           <Routes>
             <Route path='/' element={user ? <Dashboard /> : <Navigate to='/login' />} />
             <Route path='/form' element={user ? <Form /> : <Navigate to='/login' />} />

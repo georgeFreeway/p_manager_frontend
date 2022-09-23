@@ -1,45 +1,21 @@
 import React, {useState, useEffect } from 'react';
 import { useDataContext } from '../hooks/useDataContext';
-import { useAuthContext } from '../hooks/useAuthContext';
 
 //components project card
 import ProjectCard from './ProjectCard';
 import ProjectFilter from './ProjectFilter';
 
 const Dashboard = () => {
-  const { user } = useAuthContext();
   const { data, dispatch } = useDataContext();
   const [ loading, setIsLoading ] = useState(false);
   const [ error, setError ] = useState(null);
 
   //filter
   const [ filter, setFilter ] = useState('all');
-
   //filter function prop
   const changeFilter = (filteredProject) => {
     setFilter(filteredProject);
   }
-
-  const filteredProper = data && data.filter((d) => {
-    switch(filter){
-      case "all":
-        return true;
-      case "mine":
-        let assignedTome = false;
-        d.assignedUsers.forEach((u) => {
-          if(user.user._id === u.id){
-            assignedTome = true;
-          }
-        });
-        return assignedTome;
-      case "development":
-      case "marketing":
-      case "design":
-        return d.category === filter;
-      default: 
-        return true;
-    };
-  });
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -68,14 +44,29 @@ const Dashboard = () => {
     fetchProjects();
   }, [dispatch]);
 
+  const filteredProper = data && data.filter((d) => {
+    switch(filter){
+      case "all":
+        return true;
+      case "development":
+        return d.category === filter;
+      case "marketing":
+        return d.category === filter;
+      case "design":
+        return d.category === filter;
+      default: 
+        return true;
+    };
+  });
+
   return (
-    <div className='h-44 w-full mt-3'>
-      {loading && <p className='font-semibold'>loading...</p>}
-      {error && <p className='text-red-500 font-semibold'>{error.message} :(</p>}
+    <div className='h-full'>
+      {loading && <p className='font-semibold text-sm'>loading...</p>}
+      {error && <p className='text-red-500 font-semibold text-sm'>{error.message} :(</p>}
       <h1 className='text-3xl font-semibold'>Dashboard</h1>
+      <p className='text-sm font-semibold mt-2 mb-1'>Filter by:</p>
       {data && <ProjectFilter filter={filter} changeFilter={changeFilter} />}
-      {filter && <p className='mt-2'>{filter} category</p>}
-      {data.length < 1 && <p className='text-sm text-light'>Sorry :( No projects. Please click on
+      {data.length < 1 && <p className='text-sm text-light'>Sorry :( No projects. Please click on the menu button or 
       <span className='font-bold'> Add New</span> at the left sidebar to create a project.</p>}
       {data && <ProjectCard projects={filteredProper} />}
     </div>
